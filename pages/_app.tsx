@@ -7,6 +7,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { Provider as NextAuthProvider } from 'next-auth/client';
 import { Provider as HttpProvider } from 'use-http';
 import DateFnsUtils from '@date-io/date-fns';
+import { Box } from '@material-ui/core';
 import theme from '../src/lib/theme';
 import TopBar from '../src/components/TopBar';
 import { AppProvider } from '../src/store/Context';
@@ -45,7 +46,9 @@ const App = ({ Component, pageProps, router }: AppProps): ReactElement => {
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <HttpProvider url={process.env.API_URL} options={options}>
                                 <TopBar />
-                                <Component {...pageProps} key={router.route} />
+                                <Box mx={2}>
+                                    <Component {...pageProps} key={router.route} />
+                                </Box>
                             </HttpProvider>
                         </MuiPickersUtilsProvider>
                     </ThemeProvider>

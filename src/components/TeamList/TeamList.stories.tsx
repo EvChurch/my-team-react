@@ -64,3 +64,9 @@ export const Loading = (): ReactElement => {
 
     return <TeamList />;
 };
+
+export const Error = (): ReactElement => {
+    fetchMock.restore().getOnce('https://api.fluro.io/my/teams', 500);
+
+    return <TeamList />;
+};

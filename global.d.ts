@@ -33,6 +33,7 @@ interface Contact extends ContentWithRealms {
     lastName: string;
     status: 'active';
     tags: string[];
+    positions?: string[];
     _type: 'contact';
 }
 
