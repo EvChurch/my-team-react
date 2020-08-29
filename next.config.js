@@ -1,8 +1,3 @@
-module.exports = {
-    env: {
-        API_URL: process.env.API_URL,
-    },
-};
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
 

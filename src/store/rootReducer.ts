@@ -1,21 +1,14 @@
-export type Action = UpdateRealmIdsAction | UpdatePeriodAction;
+export type Action = UpdateSessionAction;
 
-interface UpdatePeriodAction {
-    type: 'updatePeriod';
-    period: 'week' | 'month' | 'year';
-}
-
-interface UpdateRealmIdsAction {
-    type: 'updateRealmIds';
-    realmIds: string[];
+interface UpdateSessionAction {
+    type: 'updateSession';
+    session: Session;
 }
 
 const rootReducer = (state: AppState, action: Action): AppState => {
     switch (action.type) {
-        case 'updatePeriod':
-            return { ...state, period: action.period };
-        case 'updateRealmIds':
-            return { ...state, realmIds: action.realmIds };
+        case 'updateSession':
+            return { ...state, session: action.session };
     }
 };
 
