@@ -1,15 +1,15 @@
 import React, { ReactElement } from 'react';
 import { getSession } from 'next-auth/client';
 import { GetServerSideProps } from 'next';
-import TeamDetails from '../../../src/components/TeamDetails';
+import CapabilityDetails from '../../../src/components/CapabilityDetails';
 
 interface Props {
     session: Session;
     id: string;
 }
 
-const MyTeamsId = ({ id }: Props): ReactElement => {
-    return <TeamDetails id={id} />;
+const MyCapabilitiesId = ({ id }: Props): ReactElement => {
+    return <CapabilityDetails id={id} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res, req, params }): Promise<{ props: Props }> => {
@@ -23,4 +23,4 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req, params 
     return { props: { session, id: params.id.toString() } };
 };
 
-export default MyTeamsId;
+export default MyCapabilitiesId;

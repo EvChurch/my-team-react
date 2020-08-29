@@ -11,7 +11,7 @@ const TeamList = (): ReactElement => {
 
     return (
         <>
-            <Box mb={3}>
+            <Box my={3}>
                 <Typography variant="h5">Teams</Typography>
             </Box>
             {loading && (

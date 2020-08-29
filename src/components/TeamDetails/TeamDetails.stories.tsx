@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import fetchMock from 'fetch-mock';
 import sleep from 'sleep-promise';
+import { AppProvider } from '../../store/Context';
 import TeamDetails from '.';
 
 export default {
@@ -23,29 +24,35 @@ const team: Team = {
     ],
     _type: 'team',
     title: 'Test | My Group',
-    slug: 'test---my-group-kzshi-9py',
     contacts: [
         {
             _id: '5f49840b0c835c5363b5930b',
-            status: 'active',
-            keywords: ['test congregation'],
-            tags: [],
-            _type: 'contact',
             firstName: 'Test',
             title: 'Test Robin',
             lastName: 'Robin',
-            gender: 'male',
-            created: '2020-08-28T22:24:11.830Z',
-            updated: '2020-08-28T22:28:10.492Z',
             realms: [],
         },
     ],
 };
 
+const session: Session = {
+    user: {
+        name: 'Robert Smith',
+        email: 'robert.smith@gmail.com',
+        image: null,
+        token: 'abc',
+    },
+    expires: new Date().toISOString(),
+};
+
 export const Default = (): ReactElement => {
     fetchMock.restore().getOnce('https://api.fluro.io/my/teams/abc', team);
 
-    return <TeamDetails id="abc" />;
+    return (
+        <AppProvider initialState={{ session }}>
+            <TeamDetails id="abc" />
+        </AppProvider>
+    );
 };
 
 export const Loading = (): ReactElement => {

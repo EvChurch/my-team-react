@@ -25,22 +25,20 @@ interface ContentWithRealms extends ContentBase {
 }
 
 interface Contact extends ContentWithRealms {
-    created: string;
-    updated: string;
     firstName: string;
-    gender: 'male' | 'female';
-    keywords: string[];
     lastName: string;
-    status: 'active';
-    tags: string[];
     positions?: string[];
+    capabilities?: string[];
     _type: 'contact';
 }
 
 interface Team extends ContentWithRealms {
     contacts: Contact[];
-    slug: string;
     _type: 'team';
+}
+
+interface Capability extends ContentWithRealms {
+    _type: 'capability';
 }
 
 interface AppState {

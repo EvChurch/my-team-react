@@ -23,7 +23,7 @@ interface Props {
 const RealmDots = ({ realms, size = 'default' }: Props): ReactElement => {
     const classes = useStyles();
     return (
-        <AvatarGroup max={4}>
+        <AvatarGroup max={2}>
             {realms.map((realm) => (
                 <Tooltip key={realm._id} title={realm.title} aria-label={realm.title}>
                     <Avatar

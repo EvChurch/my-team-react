@@ -3,6 +3,7 @@ import { getSession } from 'next-auth/client';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import TeamList from '../src/components/TeamList';
+import CapabilityList from '../src/components/CapabilityList';
 
 interface Props {
     session: Session;
@@ -15,6 +16,7 @@ const Index = ({}: Props): ReactElement => {
                 <title>My Team | Teams</title>
             </Head>
             <TeamList />
+            <CapabilityList />
         </>
     );
 };
