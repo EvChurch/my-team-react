@@ -41,3 +41,7 @@ interface Team extends ContentWithRealms {
     slug: string;
     _type: 'team';
 }
+
+interface AppState {
+    realms?: Realm[];
+}

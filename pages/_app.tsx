@@ -9,6 +9,7 @@ import { Provider as HttpProvider } from 'use-http';
 import DateFnsUtils from '@date-io/date-fns';
 import theme from '../src/lib/theme';
 import TopBar from '../src/components/TopBar';
+import { AppProvider } from '../src/store/Context';
 
 const App = ({ Component, pageProps, router }: AppProps): ReactElement => {
     useEffect(() => {
@@ -37,17 +38,19 @@ const App = ({ Component, pageProps, router }: AppProps): ReactElement => {
                 <link rel="manifest" href="/manifest.json" />
                 <link href="/favicon.png" rel="icon" type="image/png" sizes="32x32" />
             </Head>
-            <NextAuthProvider session={pageProps.session}>
-                <ThemeProvider theme={theme}>
-                    <CssBaseline />
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <HttpProvider url={process.env.API_URL} options={options}>
-                            <TopBar session={pageProps.session} />
-                            <Component {...pageProps} key={router.route} />
-                        </HttpProvider>
-                    </MuiPickersUtilsProvider>
-                </ThemeProvider>
-            </NextAuthProvider>
+            <AppProvider initialState={{}}>
+                <NextAuthProvider session={pageProps.session}>
+                    <ThemeProvider theme={theme}>
+                        <CssBaseline />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <HttpProvider url={process.env.API_URL} options={options}>
+                                <TopBar session={pageProps.session} />
+                                <Component {...pageProps} key={router.route} />
+                            </HttpProvider>
+                        </MuiPickersUtilsProvider>
+                    </ThemeProvider>
+                </NextAuthProvider>
+            </AppProvider>
         </>
     );
 };
