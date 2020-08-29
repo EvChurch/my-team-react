@@ -4,10 +4,11 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Head from 'next/head';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
 import { Provider as NextAuthProvider } from 'next-auth/client';
 import { Provider as HttpProvider } from 'use-http';
+import DateFnsUtils from '@date-io/date-fns';
 import theme from '../src/lib/theme';
+import TopBar from '../src/components/TopBar';
 
 const App = ({ Component, pageProps, router }: AppProps): ReactElement => {
     useEffect(() => {
@@ -30,7 +31,7 @@ const App = ({ Component, pageProps, router }: AppProps): ReactElement => {
     return (
         <>
             <Head>
-                <meta name="description" content="Analytics for Tandem Ministries." />
+                <meta name="description" content="Church Leadership Development Platform." />
                 <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,minimum-scale=1" />
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <link rel="manifest" href="/manifest.json" />
@@ -39,8 +40,9 @@ const App = ({ Component, pageProps, router }: AppProps): ReactElement => {
             <NextAuthProvider session={pageProps.session}>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <HttpProvider url={process.env.API_URL} options={options}>
+                            <TopBar session={pageProps.session} />
                             <Component {...pageProps} key={router.route} />
                         </HttpProvider>
                     </MuiPickersUtilsProvider>

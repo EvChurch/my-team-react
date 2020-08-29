@@ -8,75 +8,36 @@ interface Session {
     expires: string;
 }
 
-interface Filter {
-    comparator: string;
-    key: string;
-    value?: string;
-    value2?: string;
-    values?: string[] | { _id: string }[];
-    dataType?: string;
-}
+type Content = Team | Contact;
 
-interface Realm {
-    _id: string;
-    bgColor: string;
-    color: string;
-    slug: string;
-    title: string;
-    type: 'realm';
-}
-
-interface ResultSet {
+interface ContentBase {
     _id: string;
     title: string;
-    results?: Result[];
 }
 
-interface Result {
-    _id: string;
-    rowCount: number;
-    date: string;
-    data?: {
-        _id: {
-            values: {
-                [key: string]: string;
-            };
-        };
-    };
+interface Realm extends ContentBase {
+    bgColor?: string;
+    color?: string;
 }
 
-interface Content {
-    _uid: string;
-    _id: string;
-    definition: string;
-    title: string;
-    created: string;
-    realm: Realm;
-    author?: Contact;
-    data?: { [key: string]: number };
-}
-
-interface AppState {
-    period: 'week' | 'month' | 'year';
-    realmIds: string[];
-    count: number;
-}
-
-type QueryContent = Contact | Persona;
-
-interface QueryContentBase {
-    _id: string;
+interface ContentWithRealms extends ContentBase {
     realms: Realm[];
-    created: string;
 }
 
-interface Contact extends QueryContentBase {
-    title: string;
+interface Contact extends ContentWithRealms {
+    created: string;
+    updated: string;
+    firstName: string;
+    gender: 'male' | 'female';
+    keywords: string[];
+    lastName: string;
+    status: 'active';
+    tags: string[];
     _type: 'contact';
 }
 
-interface Persona extends QueryContentBase {
-    title: string;
-    collectionEmail: string;
-    _type: 'persona';
+interface Team extends ContentWithRealms {
+    contacts: Contact[];
+    slug: string;
+    _type: 'team';
 }

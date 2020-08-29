@@ -1,17 +1,25 @@
 import React, { ReactElement } from 'react';
 import { getSession } from 'next-auth/client';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import { Box } from '@material-ui/core';
+import TeamList from '../src/components/TeamList';
 
 interface Props {
-    session: {
-        user?: {
-            token: string;
-        };
-    };
+    session: Session;
 }
 
 const Index = ({}: Props): ReactElement => {
-    return <>hello world</>;
+    return (
+        <>
+            <Head>
+                <title>My Team | Home</title>
+            </Head>
+            <Box mx={2}>
+                <TeamList />
+            </Box>
+        </>
+    );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({

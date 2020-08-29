@@ -1,0 +1,21 @@
+sudo: false
+language: node_js
+node_js:
+    - '12'
+branches:
+    only:
+        - master
+cache:
+    directories:
+        - node_modules
+before_install:
+    - npm update
+install:
+    - npm install
+jobs:
+    include:
+        - script:
+              - npm run test
+              - npm run lint:ci
+        - script:
+              - bin/travis_chromatic.sh

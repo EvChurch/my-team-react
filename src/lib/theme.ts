@@ -1,54 +1,19 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const defaultTheme = createMuiTheme();
-
 const theme = createMuiTheme({
     typography: {
-        fontFamily: "'Source Sans Pro', sans-serif",
+        fontFamily:
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     },
     palette: {
         primary: {
-            main: '#0093D0',
+            dark: '#689F38',
+            main: '#8BC34A',
+            light: '#DCEDC8',
+            contrastText: '#FFFFFF',
         },
         secondary: {
-            main: '#05699b',
-        },
-    },
-    overrides: {
-        MuiCard: {
-            root: {
-                borderRadius: '10px',
-            },
-        },
-        MuiCardHeader: {
-            root: {
-                borderBottom: '1px solid #EBECEC',
-            },
-            title: {
-                fontSize: '1.2rem',
-            },
-        },
-        MuiCardContent: {
-            root: {
-                padding: defaultTheme.spacing(4),
-                [defaultTheme.breakpoints.down('sm')]: {
-                    padding: defaultTheme.spacing(2),
-                },
-            },
-        },
-        MuiCardActions: {
-            root: {
-                borderTop: '1px solid #EBECEC',
-                justifyContent: 'flex-end',
-                [defaultTheme.breakpoints.down('xs')]: {
-                    justifyContent: 'center',
-                },
-            },
-        },
-        MuiTableCell: {
-            head: {
-                fontWeight: 700,
-            },
+            main: '#00BCD4',
         },
     },
 });
