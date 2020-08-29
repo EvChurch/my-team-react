@@ -17,6 +17,7 @@ module.exports = withPlugins([
         env: {
             API_URL: process.env.API_URL || 'https://api.fluro.io',
             SITE_URL: SiteUrl,
+            NEXTAUTH_URL: SiteUrl,
         },
     },
 ]);
