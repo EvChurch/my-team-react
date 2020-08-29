@@ -15,13 +15,20 @@ const CapabilityDetails = ({ id }: Props): ReactElement => {
     return (
         <>
             {loading && (
-                <Card>
-                    <CardHeader
-                        title={<Skeleton width="50%" />}
-                        subheader={<Skeleton width="80%" />}
-                        avatar={<Skeleton variant="circle" width={40} height={40} />}
-                    />
-                </Card>
+                <>
+                    <Box mb={3}>
+                        <Typography variant="h5">
+                            <Skeleton width={100} />
+                        </Typography>
+                    </Box>
+                    <Card>
+                        <CardHeader
+                            title={<Skeleton width="50%" />}
+                            subheader={<Skeleton width="80%" />}
+                            avatar={<Skeleton variant="circle" width={40} height={40} />}
+                        />
+                    </Card>
+                </>
             )}
             {!loading && (
                 <>
