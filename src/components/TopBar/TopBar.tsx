@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState, useContext } from 'react';
 import {
     AppBar,
     Toolbar,
@@ -23,6 +23,7 @@ import { signOut } from 'next-auth/client';
 import Link from 'next/link';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
+import { AppContext } from '../../store/Context';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -45,11 +46,10 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-interface Props {
-    session?: Session;
-}
-
-const TopBar = ({ session }: Props): ReactElement => {
+const TopBar = (): ReactElement => {
+    const {
+        state: { session },
+    } = useContext(AppContext);
     const classes = useStyles();
     const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
     const [drawerOpen, setDrawerOpen] = useState(false);

@@ -43,5 +43,5 @@ interface Team extends ContentWithRealms {
 }
 
 interface AppState {
-    realms?: Realm[];
+    session?: Session;
 }

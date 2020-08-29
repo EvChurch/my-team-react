@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { AppProvider } from '../../store/Context';
 import TopBar from '.';
 
 export default {
@@ -16,5 +17,9 @@ const session: Session = {
 };
 
 export const Default = (): ReactElement => {
-    return <TopBar session={session} />;
+    return (
+        <AppProvider initialState={{ session }}>
+            <TopBar />
+        </AppProvider>
+    );
 };
