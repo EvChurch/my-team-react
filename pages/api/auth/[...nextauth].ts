@@ -4,7 +4,6 @@ import Axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const options = {
-    site: process.env.SITE_URL,
     providers: [
         Providers.Credentials({
             name: 'Fluro',
