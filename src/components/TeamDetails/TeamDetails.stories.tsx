@@ -31,6 +31,7 @@ const team: Team = {
             title: 'Test Robin',
             lastName: 'Robin',
             realms: [],
+            _type: 'contact',
         },
     ],
 };
